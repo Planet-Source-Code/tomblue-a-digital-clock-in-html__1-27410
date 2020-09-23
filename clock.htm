@@ -1,0 +1,42 @@
+<SCRIPT language=javascript>
+function showClock() {
+
+                         // new date object. 
+                         var d = new Date();
+                         // update the clockSpan
+                         writeclockvalue("clockSpan", d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds());
+                         // call the function again. 
+                         setTimeout("showClock();", 1000);
+                    }
+
+function writeclockvalue(id,text) {
+                       if (navigator.appName == "Netscape") {
+                       
+                         // only works in "absolute" positioning!
+                        document.layers[id].document.open();
+                        document.layers[id].document.write(text);
+                        document.layers[id].document.close();
+
+                   } else if (navigator.appName == "Microsoft Internet Explorer")
+                        document.all[id].innerHTML = text;
+
+                    }
+</script>
+
+<html>
+ <body bgColor="#ffffff" onload="return window_onload()" onunload="return window_onunload()" marginheight="0" topmargin="0" leftmargin="0" marginwidth="0">
+  <script ID="clientEventHandlersJS" LANGUAGE="javascript">
+    <!--
+    function window_onload() {
+    showClock();
+    }
+    function window_onunload() {
+    }
+    //-->
+    </script>
+ </head>   
+ <hr>
+  Time:<SPAN ID="clockSpan" style="position: absolute"></SPAN>
+<hr>
+
+</html>
